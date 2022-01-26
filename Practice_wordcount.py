@@ -25,13 +25,15 @@ class analysed(object):
         if word in freqdict:
             return freqdict[word]
         else:
-            return 0
+            print("Not there")
 
 q=open("E:/SQL/External Video-en.txt","r",encoding="utf8")
 x=q.read()
 #print(x)
+#samplePassage=[]
 samplePassage = analysed(x)
 
 print(samplePassage.freqall())
-print(samplePassage.freqof("qmet"))
+search=input("Enter the word you want to check : ")
+print(samplePassage.freqof(search))
 q.close()
