@@ -2,9 +2,7 @@ node
 {
   stage('Build')
   {
-    sh '''sudo -iu root
-          file=/home/centos
-          cat $file/pyramid.py
+    sh '''uptime;uname -r;
          '''
   }
 }
