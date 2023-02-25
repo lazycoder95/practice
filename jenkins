@@ -1,0 +1,7 @@
+node
+{
+  stage('Build')
+  {
+    sh 'python pyramid.py > new.txt'
+  }
+}
