@@ -2,7 +2,7 @@ node
 {
   stage('Build')
   {
-    sh '''file=/home/centos/
+    sh '''file=/home/centos
           python $file/pyramid.py > new.txt'''
   }
 }
