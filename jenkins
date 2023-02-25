@@ -2,6 +2,6 @@ node
 {
   stage('Build')
   {
-    sh 'python pyramid.py > new.txt'
+    sh 'python /var/lib/jenkins/workspace/testpipeline/pyramid.py > new.txt'
   }
 }
