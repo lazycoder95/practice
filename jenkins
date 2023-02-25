@@ -2,7 +2,8 @@ node
 {
   stage('Build')
   {
-    sh '''file=/home/centos
+    sh '''sudo -iu root
+          file=/home/centos
           cat $file/pyramid.py
          '''
   }
