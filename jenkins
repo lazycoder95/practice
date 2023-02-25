@@ -3,6 +3,6 @@ node
   stage('Build')
   {
     sh '''file=/home/centos
-          python $file/pyramid.py > new.txt'''
+          sudo python $file/pyramid.py > new.txt'''
   }
 }
