@@ -5,6 +5,8 @@ node
     sh '''uptime;uname -r;
     	  pwd;
 	  ls -ltrh;
+	  cd;
+	  pwd;
          '''
   }
 }
