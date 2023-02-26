@@ -9,4 +9,8 @@ node
 	  python pyramid.py > new.txt
          '''
   }
+  stage('Slack Notification')
+  {
+  slackSend baseUrl: 'https://hooks.slack.com/services/', botUser: true, channel: 'jenkins-demo', color: 'good', message: 'hi', teamDomain: 'teamdemo-talk', tokenCredentialId: 'slackhook'
+  }
 }
