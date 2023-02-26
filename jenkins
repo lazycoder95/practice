@@ -3,7 +3,8 @@ node
   stage('Build')
   {
     sh '''uptime;uname -r;
-	  ls -ltrh;
+    pwd;
+    ls -ltrh;
 	  cd;
 	  pwd;
          '''
