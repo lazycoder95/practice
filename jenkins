@@ -6,8 +6,6 @@ node
     	  pwd;
    	  ls -ltrh;
 	  cd;
-	  pwd;
-	  
 	  cd practice
 	  python pyramid.py > new.txt
          '''
