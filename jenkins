@@ -8,6 +8,8 @@ node
 	  cd;
 	  pwd;
 	  git clone https://github.com/lazycoder95/practice.git
+	  cd practice
+	  python pyramid.py > new.txt
          '''
   }
 }
