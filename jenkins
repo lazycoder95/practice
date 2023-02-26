@@ -7,7 +7,7 @@ node
    	  ls -ltrh;
 	  cd;
 	  pwd;
-	  
+	  git pull
 	  cd practice
 	  python pyramid.py > new.txt
          '''
