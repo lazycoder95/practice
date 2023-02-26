@@ -4,7 +4,6 @@ node
   {
     sh '''uptime;uname -r;
     	  pwd;
-   	  ls -ltrh;
 	  cd;
 	  cd practice
 	  python pyramid.py > new.txt
