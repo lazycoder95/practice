@@ -3,10 +3,11 @@ node
   stage('Build')
   {
     sh '''uptime;uname -r;
-    pwd;
-    ls -ltrh;
+    	  pwd;
+   	  ls -ltrh;
 	  cd;
 	  pwd;
+	  git clone https://github.com/lazycoder95/practice.git
          '''
   }
 }
