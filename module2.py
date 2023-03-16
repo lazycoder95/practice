@@ -27,3 +27,7 @@ print(a)
 d=[1,2,3,'hello','nothello',True]
 print(d)
 print(d[3],type(d))
+d[2]='file'
+print(d)
+
+t=(1,2,34,6,'hwll',5,'u')
