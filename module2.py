@@ -23,3 +23,7 @@ a*=5
 print(a)
 a/=6
 print(a)
+
+d=[1,2,3,'hello','nothello',True]
+print(d)
+print(d[3],type(d))
