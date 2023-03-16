@@ -1,5 +1,5 @@
 print('hello world')
-a= int(input('enter something'))
+#a= int(input('enter something'))
 
 print(a)
 print(type(a))
@@ -31,5 +31,5 @@ d[2]='file'
 print(d)
 
 t=(1,2,34,6,'hwll',5,'u')
-t[2]='g'
+#t[2]='g'
 print(t,type(t))
