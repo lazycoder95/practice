@@ -16,3 +16,10 @@ print(10<9)
 print(10>=10)
 print(10<=9)
 """
+
+a+=5
+print(a)
+a*=5
+print(a)
+a/=6
+print(a)
