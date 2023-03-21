@@ -1,8 +1,19 @@
-- hosts: all
-  remote_users: centos
+- hosts: web
+  remote_user: centos
   become: yes
   tasks:
     - name : installing httpd
       yum:
         name: httpd
         state: latest
+      register: http_status
+
+- hosts: slave
+  become: yes
+  tasks:
+    - name: copy file
+      copy:
+        remote_src: yes     #incase of cpying the directory from one path to another in remote server
+        src: /home/centos/new/
+        dest: /opt/new
+        mode: 2777
