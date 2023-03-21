@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  vars:
+    ports: 8090
+    time_out: 300
+    timeuncomment: 'TimeoutStartSec'
+  tasks:
+    - name: changing time_out
+      lineinfile:
+        path: /lib/systemd/system/jenkins.service
+        regexp: ['^#TimeoutStartSec','^TimeoutStartSec']
+        line: "{{timeuncomment}}={{time_out}}"

@@ -1,0 +1,16 @@
+ - hosts: all
+   become: yes
+   vars:
+    ports: 8090
+   tasks:
+    - name: start of jenkins
+      service:
+        name: jenkins
+        state: started
+    
+    - name: checking ports
+      command: grep -i JENKINS_PORT /etc/sysconfig/jenkins
+      register: port_out
+
+    - name: display
+      debug: "{{port_out}}"
