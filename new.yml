@@ -1,0 +1,8 @@
+- hosts: all
+  remote_users: centos
+  become: yes
+  tasks:
+    - name : installing httpd
+      yum:
+        name: httpd
+        state: latest
