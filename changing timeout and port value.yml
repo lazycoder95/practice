@@ -8,10 +8,5 @@
     - name: changing time_out
       lineinfile:
         path: /lib/systemd/system/jenkins.service
-        regexp: '^#TimeoutStartSec'
+        regexp: ['^#TimeoutStartSec','^TimeoutStartSec']
         line: "{{timeuncomment}}={{time_out}}"
-      
-    - name: removing line
-      replace:
-        path: /etc/sysconfig/jenkins
-        regexp: '^#TimeoutStartSec'
