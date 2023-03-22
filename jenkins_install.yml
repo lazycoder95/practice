@@ -7,11 +7,16 @@
         description: yum epel
         baseurl: http://pkg.jenkins.io/redhat-stable
         gpgkey: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    
+    - name: installing dnf
+      yum:
+        name: dnf
+        state: latest
 
     - name: installing java and jenkins
-      yum:
+      dnf:
        name: "{{items}}"
        state: present
       with_items:
-        - java
+        - java-11
         - jenkins
