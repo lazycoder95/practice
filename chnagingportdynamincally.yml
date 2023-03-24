@@ -1,0 +1,18 @@
+---
+- hosts: slave
+  become: yes
+  vars:
+    port_tom: 8090
+  tasks:
+  - name: copying the template file
+    template:
+      src: ./server.xml.j2
+      dest: /opt/tomcat/apache-tomcat-9.0.73/conf/server.xml
+  - name: stop the tomcat
+    shell: nohup /opt/tomcat/apache-tomcat-9.0.73/bin/shutdown.sh
+    notify:
+     - start_again
+    
+  handlers:
+   - name: start_again
+     shell: nohup /opt/tomcat/apache-tomcat-9.0.73/bin/start.sh

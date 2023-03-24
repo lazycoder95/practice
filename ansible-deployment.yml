@@ -1,0 +1,53 @@
+---
+- hosts: slave
+  become: yes
+  vars:
+    port_tom: 8090
+  tasks:
+   - name: updating packages 
+     yum:
+      name: '*'
+      state: present
+
+   - name: installing java
+     yum:
+      name: java-1.8.*
+      state: present
+
+   - name: downloading tomcat
+     get_url:
+      url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.tar.gz
+      dest: /opt/
+
+   - name: extracting the file
+     unarchive:
+      src: /opt/apache-*.gz
+      dest: /opt/
+      remote_src: yes
+
+   - name: moving the extracted files to tomcat folder
+     shell: mv /opt/apache-tomcat-* /opt/tomcat
+
+   - name: bring the tomcat up
+     shell : nohup /opt/tomcat/bin/startup.sh
+
+   - name: copying the template file
+     template:
+      src: ./server.xml.j2
+      dest: /opt/tomcat/conf/server.xml
+
+   - name: stop the tomcat
+     shell: nohup /opt/tomcat/bin/shutdown.sh
+     notify:
+      - start_again
+
+   - name: deploying war
+     copy:
+      src: ./sample.war
+      dest: /opt/tomcat/webapps/
+     tags:
+      - deployment
+
+  handlers:
+   - name: start_again
+     shell: nohup /opt/tomcat/bin/startup.sh  

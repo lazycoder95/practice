@@ -1,0 +1,10 @@
+---
+- hosts: slave
+  become: yes
+  tasks:
+   - name: deploying war
+    copy:
+     src: ./sample.war
+     dest: /opt/apache-tomcat-9.0.73/webapps/
+    tags:
+     - deployment
