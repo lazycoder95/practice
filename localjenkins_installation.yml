@@ -1,0 +1,35 @@
+---
+- hosts: all
+  become: yes
+  vars_prompt:
+    name: portnum
+    prompt: portnumber
+    private: no
+  tasks:
+   - name: installing epel repo for jenkins
+     yum_repository:
+      name: epel
+      description: epel release
+      baseurl: http://pkg.jenkins.io/redhat-stable
+      gpgkey: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+   - name: installing java and jenkins
+     yum:
+      name: "{{item}}"
+      state: present
+     loop:
+     - fontconfig
+     - java-11-openjdk
+     - jenkins
+     notify:
+      - start_jenkins
+   - name: replacing port number
+     lineinfile:
+      path: /etc/sysconfig/jenkins
+      regexp: '^JENKINS_PORT'
+      line: "JENKINS_PORT={{portnum}}"
+
+  handlers:
+   - name: start_jenkins
+     service:
+      name: jenkins
+      state: started

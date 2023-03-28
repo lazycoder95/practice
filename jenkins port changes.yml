@@ -1,0 +1,25 @@
+---
+- hosts: slave
+  become: yes
+  vars_prompt:
+   name: port_num
+   prompt: portnumber
+   private: no
+  tasks:
+  - name: changing port number
+     lineinfile:
+     path: /usr/lib/systemd/system/jenkins.service
+     regexp: 'JENKINS_PORT'
+     line: 'Environment="JENKINS_PORT={{port_num}}"'
+    notify:
+     - daemonreload
+     - jenkinsrestart
+  
+  handlers:
+  - name: daemonreload
+    command: systemctl daemon-reload
+    become: yes
+  - name: jenkinsrestart
+    service:
+     name: jenkins
+     state: restarted

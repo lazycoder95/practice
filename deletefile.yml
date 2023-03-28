@@ -1,0 +1,25 @@
+---
+- hosts: slave
+  become: yes
+  tasks:
+   - name: find files with pattern
+     find:
+     path: /home/centos/deletetes/
+     patterns: '1*'
+     use_regex: yes
+     register: out
+
+   - name: deleting with patterns
+     file:
+      path: /home/centos/deletetes/
+      state: file
+     loop: 
+      - "{{out.files}}"
+      
+   - name: delete files inside a folder
+     file:
+      path: /home/centos/deletetes/1.txt
+      state: touch
+      mode: u+rw,g+rwx,o+r
+      owner: root
+      group: centos
